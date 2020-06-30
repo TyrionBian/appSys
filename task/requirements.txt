@@ -1,0 +1,5 @@
+requests==2.18.4
+mysql-connector==2.1.6
+redis==3.0.1
+Flask==1.0.2
+happybase==1.1.0

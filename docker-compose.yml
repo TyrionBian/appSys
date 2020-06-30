@@ -1,0 +1,44 @@
+
+version: '3.3'
+services:
+  task:
+    build: ./task/
+    image: task:${TAG}
+    environment:
+      CONTROL_SERVER: ${CONTROL_SERVER}
+      KAFKA_SERVER: ${KAFKA_SERVER}
+      REDIS_HOST: ${REDIS_HOST}
+    ports:
+      - 5001:5001
+    links:
+      - control
+
+  control:
+    image: control:${TAG}
+    build: ./control/
+    environment:
+      DATABASE_URL: ${DATABASE_URL}
+      KAFKA_SERVER: ${KAFKA_SERVER}
+    ports:
+      - 5000:5000
+
+  consumer:
+    build: ./consumer/
+    image: consumer:${TAG}
+    environment:
+      CONTROL_SERVER: ${CONTROL_SERVER}
+      KAFKA_SERVER: ${KAFKA_SERVER}
+    ports:
+      - 5002:5002
+    links:
+      - control
+
+  model:
+    build: ./model/
+    image: model:${TAG}
+    environment:
+      CONTROL_SERVER: ${CONTROL_SERVER}
+      KAFKA_SERVER: ${KAFKA_SERVER}
+    ports:
+      - 5003:5003
+
