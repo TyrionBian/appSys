@@ -7,7 +7,7 @@ Flask-Script==2.0.6
 Flask-SQLAlchemy==2.3.2
 SQLAlchemy==1.2.7
 Flask-Testing==0.7.1
-PyJWT==1.7.1
+PyJWT==2.4.0
 SQLAlchemy-Utils==0.33.9
 pycrypto==2.6.1
 kafka-python==1.4.3
